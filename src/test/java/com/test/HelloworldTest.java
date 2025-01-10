@@ -16,7 +16,7 @@ public class HelloworldTest {
 @Test
     public void testHelloWorld(){
     RestAssured.given().baseUri("http://localhost:8010/")
-            .get("helloworldbean")
+            .get("home")
             .then().log().all();
 }
 @Test
@@ -28,4 +28,13 @@ public class HelloworldTest {
     System.out.println(response);
     Assert.assertEquals(response.getStatusCode(), 200);
 }
+    @Test
+    public void runTest_HelloWorld_PathVariable(){
+        RestAssured.baseURI = "http://localhost:8010";
+        RequestSpecification request = RestAssured.given();
+        Response response = request.get("/student/sudhanshu");
+        response.then().log().all();
+        System.out.println(response);
+        Assert.assertEquals(response.getStatusCode(), 200);
+    }
 }

@@ -18,7 +18,9 @@ public class Testbase {
     }
 
     public Response response_GET(String url, HashMap<String, String> setHeader) {
-        response = given().headers(setHeader).baseUri(url).
+        response = given().auth()
+                .basic("username", "password123")
+                .headers(setHeader).baseUri(url).
                 when().get("").
                 then().extract().response();
         response.then().log().all();
@@ -26,7 +28,9 @@ public class Testbase {
     }
 
     public Response response_GET_ID(String url, HashMap<String, String> setHeader, int id) {
-        response = given().headers(setHeader).baseUri(url).
+        response = given().auth()
+                .basic("username", "password123")
+                .headers(setHeader).baseUri(url).
                 when().get("").
                 then().extract().response();
         response.then().log().all();
